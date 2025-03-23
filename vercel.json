@@ -2,7 +2,8 @@
   "version": 2,
   "buildCommand": "npm install && npm run build",
   "installCommand": "npm install",
-  "routes": [
-    { "src": "/(.*)", "dest": "dist/index.js" }
+  "outputDirectory": "dist",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/" }
   ]
 }
