@@ -14,7 +14,7 @@ dotenv.config();
 
 // Create Express app
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = parseInt(process.env.PORT || '4000', 10);
 
 // Apply basic middleware
 app.use(cors());
@@ -62,11 +62,11 @@ const startServer = async () => {
     // Run initialization tasks
     await initializeApplication();
     
-    // Start the server
-    app.listen(PORT, () => {
+    // Start the server - listen on all network interfaces
+    app.listen(PORT, '0.0.0.0', () => {
       console.log(`
-  🚀 0G Compute Network API Server running on http://localhost:${PORT}
-  📚 API Documentation: http://localhost:${PORT}/docs
+🚀 0G Compute Network API Server running on port ${PORT}
+📚 API Documentation available at /docs
       `);
     });
   } catch (error) {
